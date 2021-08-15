@@ -1,5 +1,3 @@
-
-
 int popen(int pin_n)
 {
   // open the pin by writing the pin_n number into the export file
@@ -15,15 +13,9 @@ int popen(int pin_n)
 
 int pinMode(int pin_n, int mode)
 {
-
-  char n[3];
-  sprintf(n, "%d", pin_n);
-
   // choose if it is in or out
   char dir_path[40];
-  strcpy(dir_path, "/sys/class/gpio/gpio");
-  strcat(dir_path, n);
-  strcat(dir_path, "/direction");
+  sprintf(dir_path, "/sys/class/gpio/gpio%d/direction", pin_n);
 
   char pin_mode[5] = "in";
   if (mode) strcpy(pin_mode, "out");
@@ -35,7 +27,6 @@ int pinMode(int pin_n, int mode)
   return 0;
 }
 
-
 int pclose(int pin_n)
 {
   FILE* fptr_unexp = NULL;
@@ -46,4 +37,9 @@ int pclose(int pin_n)
   fclose(fptr_unexp);
 
   return 0;
+}
+
+void handle_pins()
+{
+  
 }
