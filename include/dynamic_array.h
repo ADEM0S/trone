@@ -7,7 +7,7 @@ typedef struct DYNAMIC_ARRAY_STRUCT
 
 void init_array(DynArray *a, size_t initial_size)
 {
-	a->array = (Video*) malloc(initial_size * sizeof(Video));
+	a->array = (Video*) malloc(initial_size * sizeof(VIDEO_STRUCT));
 	a->used = 0;
 	a->size = initial_size;
 }
@@ -17,7 +17,7 @@ void insert_array(DynArray *a, Video element)
 	if (a->used == a->size)
 	{
 		a->size *= 2;
-		a->array = (Video*) realloc(a->array, a->size * sizeof(Video));
+		a->array = (Video*) realloc(a->array, a->size * sizeof(VIDEO_STRUCT));
 	}
 	a->array[a->used++] = element;
 }

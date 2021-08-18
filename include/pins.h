@@ -1,4 +1,4 @@
-int popen(int pin_n)
+int pin_open(int pin_n)
 {
   // open the pin by writing the pin_n number into the export file
   FILE* fptr_exp = NULL;
@@ -27,7 +27,7 @@ int pinMode(int pin_n, int mode)
   return 0;
 }
 
-int pclose(int pin_n)
+int pin_close(int pin_n)
 {
   FILE* fptr_unexp = NULL;
   char path[] = "/sys/class/gpio/unexport";
@@ -41,5 +41,5 @@ int pclose(int pin_n)
 
 void handle_pins()
 {
-  
+
 }
